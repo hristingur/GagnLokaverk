@@ -1,0 +1,132 @@
+create table staff
+(
+    staff_id int primary key not null,
+    Name varchar(50),
+    phone int,
+    address varchar(50),
+    email varchar(50)
+);
+CREATE TABLE IF NOT EXISTS 'hopverkefni'
+(
+  
+ID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  
+name varchar(60) NOT NULL,
+  
+email varchar(60) NOT NULL,
+  
+roomType varchar(60) NOT NULL,
+ 
+doa varchar(60) NOT NULL,
+  
+dol varchar(60) NOT NULL,
+  
+cardNum varchar(60) NOT NULL,
+  
+cv varchar(60) NOT NULL,
+ 
+);
+
+
+create table departments
+(
+    departments_ID int primary key not null,
+    hotel_maneger int,
+    front_desk int,
+    chef int,
+    house_keeping int,
+    room_service int,
+    staff_ID int,
+   	foreign key (staff_ID) references staff(staff_ID)
+);
+
+
+create table guest
+(
+    SSN int primary key not null,
+    name varchar(50),
+    CardNr int,
+    CardCv int,
+    email varchar(50)
+    );
+
+
+create table reservation 
+(
+    reservation_ID int primary key not null,
+    check_in date,
+    check_out date,
+    guest_ID int,
+    foreign key (guest_ID) references guest(SSN)
+    );
+
+
+
+create table room
+(
+    roomNr int primary key not null,
+    price int,
+    RoomType int,
+    guest_ID int,
+    foreign key (guest_ID) references guest(SSN)
+    );
+    
+    
+create table Event
+(
+    Event_ID int primary key not null,
+    Name varchar(50),
+    Email varchar(50),
+    Event_Type int,
+    guest_ID int,
+    CardNr int,
+    CardCv int,
+    Booking_date date,
+    foreign key (guest_ID) references guest(SSN)
+    );
+
+   create table Hotel_Manager
+(
+    Staff_ID int primary key not null,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+   create table 
+(
+    Staff_ID int primary key not null,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+   create table Front_Desk
+(
+    Staff_ID int not null primary key,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+   create table HouseKeeping
+(
+    Staff_ID int primary key not null,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+   create table Room Service
+(
+    Staff_ID int primary key not null,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+   create table Chef
+(
+    Staff_ID int primary key not null,
+    foreign key (Staff_ID) references staff(Staff_ID)
+    );
+
+-------------------------------------------------------------------
+insert into staff()
+values 
+(1,"Aron",8482690,"aaa","aront@hotmail.com"),
+(2,"Jon",6451645,"afasdf","jon@gmail.com"),
+(3,"petur",845460,"pp","Petur@hotmail.com"),
+(4,"atli",1235234,"at","atli.com"),
+(5,"johanna",123123,"jp","jonna.com");
+    
